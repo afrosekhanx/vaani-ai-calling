@@ -1,0 +1,30 @@
+.wave {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 48px;
+}
+
+.wave span {
+  flex: 1;
+  max-width: 5px;
+  height: 12%;
+  border-radius: 999px;
+  background: currentColor;
+  transition: height 0.3s ease;
+}
+
+.wave--on span {
+  animation: wave-bounce 1.1s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -90ms);
+}
+
+@keyframes wave-bounce {
+  0%,
+  100% {
+    height: 12%;
+  }
+  50% {
+    height: var(--h);
+  }
+}

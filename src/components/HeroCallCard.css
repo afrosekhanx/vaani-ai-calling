@@ -1,0 +1,150 @@
+.callcard {
+  position: relative;
+  padding: 22px;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: 0 40px 70px -35px rgba(58, 43, 217, 0.45);
+}
+
+.callcard__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.callcard__head strong {
+  display: block;
+  line-height: 1.2;
+}
+
+.callcard__head small {
+  color: var(--ink-soft);
+}
+
+.callcard__avatar {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: var(--violet-tint);
+  color: var(--violet);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.callcard__live {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 92, 122, 0.12);
+  color: var(--rose);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.callcard__live i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rose);
+  animation: blink 1.2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.callcard__wave {
+  margin: 18px 0 10px;
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  background: var(--paper);
+  color: var(--violet);
+}
+
+.callcard__chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  height: 290px;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent 0, #000 22%);
+}
+
+.bubble {
+  max-width: 82%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  animation: bubble-in 0.35s ease both;
+}
+
+.bubble--ai {
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  background: var(--violet-tint);
+}
+
+.bubble--user {
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+  background: var(--ink);
+  color: #fff;
+}
+
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+}
+
+/* Floating chips around the card */
+.callcard__chip {
+  position: absolute;
+  z-index: 2;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  font-weight: 700;
+  font-size: 0.88rem;
+  box-shadow: 0 14px 30px -16px rgba(18, 22, 58, 0.4);
+}
+
+.callcard__chip--top {
+  top: -16px;
+  right: 22px;
+  color: var(--mint);
+  animation: float 5s ease-in-out infinite;
+}
+
+.callcard__chip--bottom {
+  bottom: -18px;
+  left: 26px;
+  color: var(--violet);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.callcard__chip--bottom.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-6px);
+  }
+}

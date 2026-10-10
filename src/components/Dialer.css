@@ -1,0 +1,384 @@
+.dialer__grid {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 32px;
+  align-items: stretch;
+}
+
+/* ---------- Phone / keypad ---------- */
+.phone {
+  padding: 28px 26px 30px;
+  border-radius: 36px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: 0 40px 70px -40px rgba(58, 43, 217, 0.5);
+}
+
+.phone__display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 64px;
+  padding: 0 8px 0 18px;
+  border-radius: var(--radius-md);
+  background: var(--paper);
+}
+
+.phone__display.is-shaking {
+  animation: shake 0.45s ease;
+}
+
+@keyframes shake {
+  20%, 60% { transform: translateX(-7px); }
+  40%, 80% { transform: translateX(7px); }
+}
+
+.phone__flag {
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.phone__number {
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.phone__number.is-empty {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: #9aa0c0;
+  letter-spacing: 0;
+}
+
+.phone__back {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--ink-soft);
+  transition: background 0.2s;
+}
+
+.phone__back:hover:not(:disabled) {
+  background: var(--line);
+}
+
+.phone__back:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* Status pill */
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: fit-content;
+  margin: 18px auto;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: var(--paper);
+  color: var(--ink-soft);
+}
+
+.status i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status b {
+  font-variant-numeric: tabular-nums;
+}
+
+.status--dialing {
+  background: rgba(255, 176, 32, 0.16);
+  color: #b87500;
+}
+
+.status--dialing i {
+  animation: blink 0.8s ease-in-out infinite;
+}
+
+.status--connected {
+  background: rgba(20, 200, 165, 0.14);
+  color: #0a9a7f;
+}
+
+.status--connected i {
+  animation: pulse-dot 1.4s ease-out infinite;
+}
+
+.status--ended {
+  background: rgba(255, 92, 122, 0.12);
+  color: var(--rose);
+}
+
+@keyframes pulse-dot {
+  0% { box-shadow: 0 0 0 0 rgba(20, 200, 165, 0.6); }
+  100% { box-shadow: 0 0 0 9px rgba(20, 200, 165, 0); }
+}
+
+/* Keys */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.key {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 68px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--white);
+  transition: transform 0.12s ease, background 0.2s, border-color 0.2s;
+}
+
+.key span {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.key small {
+  height: 12px;
+  margin-top: 4px;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  color: #9aa0c0;
+}
+
+.key:hover:not(:disabled) {
+  border-color: var(--violet);
+  background: var(--violet-tint);
+}
+
+.key:active:not(:disabled),
+.key.is-pressed {
+  transform: scale(0.93);
+  background: var(--violet);
+  border-color: var(--violet);
+  color: #fff;
+}
+
+.key.is-pressed small,
+.key:active:not(:disabled) small {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.key:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* Bottom row: mute, call, speaker */
+.phone__actions {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.round {
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  font-weight: 700;
+  font-size: 0.88rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.round.is-on {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.round:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.call-btn {
+  display: grid;
+  place-items: center;
+  min-width: 76px;
+  height: 76px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--mint);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 16px 30px -12px rgba(20, 200, 165, 0.8);
+  transition: transform 0.2s ease, background 0.25s ease;
+}
+
+.call-btn:hover {
+  transform: scale(1.07);
+}
+
+.call-btn--end {
+  background: var(--rose);
+  box-shadow: 0 16px 30px -12px rgba(255, 92, 122, 0.8);
+}
+
+.call-btn--end svg {
+  transform: rotate(135deg);
+}
+
+/* ---------- AI agent panel ---------- */
+.agent {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 26px;
+  border-radius: var(--radius-lg);
+  background: var(--ink);
+  color: #fff;
+  min-height: 560px;
+}
+
+.agent__scripts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: transparent;
+  font-weight: 500;
+  font-size: 0.92rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.chip:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.chip.is-active {
+  background: var(--violet);
+  border-color: var(--violet);
+  font-weight: 700;
+}
+
+.chip:disabled:not(.is-active) {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.agent__who {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.agent__who small {
+  display: block;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.2;
+}
+
+.agent__avatar {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+.agent__wave {
+  flex: 1;
+  margin-left: 12px;
+  color: var(--mint);
+}
+
+.agent__chat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  min-height: 260px;
+  max-height: 320px;
+  padding: 4px 2px;
+  overflow-y: auto;
+}
+
+.agent__empty {
+  margin: auto;
+  max-width: 32ch;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.agent .bubble--ai {
+  background: rgba(91, 75, 255, 0.35);
+}
+
+.agent .bubble--user {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.agent__result {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  background: rgba(20, 200, 165, 0.14);
+  animation: bubble-in 0.4s ease both;
+}
+
+.agent__result span {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.agent__result strong {
+  color: var(--mint);
+}
+
+.agent__result em {
+  margin-left: auto;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+@media (max-width: 900px) {
+  .dialer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .phone {
+    max-width: 420px;
+    width: 100%;
+    margin-inline: auto;
+  }
+}

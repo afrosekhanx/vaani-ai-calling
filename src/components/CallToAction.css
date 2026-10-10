@@ -1,0 +1,55 @@
+.cta {
+  padding: 0 0 110px;
+}
+
+.cta__box {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 32px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--violet) 0%, var(--violet-deep) 100%);
+  color: #fff;
+  text-align: center;
+}
+
+.cta__wave {
+  position: absolute;
+  inset: auto 0 0 0;
+  opacity: 0.18;
+  padding: 0 20px;
+}
+
+.cta__wave .wave {
+  height: 120px;
+  align-items: flex-end;
+}
+
+.cta__wave .wave span {
+  max-width: none;
+}
+
+.cta h2 {
+  position: relative;
+  max-width: 18ch;
+  margin: 0 auto;
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  font-weight: 800;
+}
+
+.cta p {
+  position: relative;
+  max-width: 44ch;
+  margin: 18px auto 32px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.cta .btn {
+  position: relative;
+  background: #fff;
+  color: var(--violet-deep);
+  box-shadow: 0 16px 30px -14px rgba(0, 0, 0, 0.5);
+}
+
+.cta .btn:hover {
+  background: var(--paper);
+}

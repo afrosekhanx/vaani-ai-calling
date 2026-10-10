@@ -1,0 +1,73 @@
+.how__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.how__steps li {
+  position: relative;
+  padding-top: 8px;
+}
+
+/* line connecting the numbers */
+.how__steps li:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 56px;
+  right: -28px;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--violet) 0 6px, transparent 6px 12px);
+  opacity: 0.35;
+}
+
+.how__num {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background: var(--violet);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  transition: transform 0.25s ease;
+}
+
+.how__steps li:hover .how__num {
+  transform: scale(1.15) rotate(-6deg);
+}
+
+.how__steps h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.how__steps p {
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+}
+
+@media (max-width: 900px) {
+  .how__steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 28px;
+  }
+
+  .how__steps li::before {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .how__steps {
+    grid-template-columns: 1fr;
+  }
+}
